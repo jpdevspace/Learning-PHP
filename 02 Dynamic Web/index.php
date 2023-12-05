@@ -14,9 +14,17 @@ $pdo = new PDO($dsn);
 $statement = $pdo->prepare('SELECT * FROM posts');
 $statement->execute();
 
-$posts = $statement->fetchAll();
+// Passing PDO::FETCH_ASSOC as arg determines the type of data
+// that the fetch will return
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-dd($posts);
+foreach ($posts as $post)
+{
+  echo '<li>' . $post['title'] . '</li>';
+}
+
+
+
 
 // THIS EXAMPLE HAS NOTHING TO DO WITH THE APP, IT'S JUST 
 // NOTES, THIS IS HOW YOU CREATE A CLASS, INSTANTIATE IT AND

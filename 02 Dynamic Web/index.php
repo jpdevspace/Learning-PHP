@@ -1,34 +1,36 @@
 <?php
 
 require('functions.php');
-// require('Database.php');
+require('Database.php');
 // require('Response.php');
 // require('router.php');
 
-// Connect to our MySQL DB
-$dsn = 'mysql:host=localhost;port=3306;dbname=laracast_myapp;user=root;charset=utf8mb4';
+$db = new Database();
 
-$pdo = new PDO($dsn);
+/*
+|--------------------------------------------------------------------------
+| PDO::FETCH_ASSOC
+|--------------------------------------------------------------------------
+| Passing PDO:FETCH_ASSOC as an arg to the fetch func
+| determines what type of data will be returned
+| i.e. returns an associative array
+*/
 
+$post = $db->query('SELECT * FROM posts WHERE id = 1')->fetch(PDO::FETCH_ASSOC);
 
-$statement = $pdo->prepare('SELECT * FROM posts');
-$statement->execute();
-
-// Passing PDO::FETCH_ASSOC as arg determines the type of data
-// that the fetch will return
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($posts as $post)
-{
-  echo '<li>' . $post['title'] . '</li>';
-}
+dd($post['title']);
 
 
 
 
-// THIS EXAMPLE HAS NOTHING TO DO WITH THE APP, IT'S JUST 
-// NOTES, THIS IS HOW YOU CREATE A CLASS, INSTANTIATE IT AND
-// CALL ITS FIELDS AND METHODS WITH -> 
+/*
+|--------------------------------------------------------------------------
+| CLASS EXAMPLE
+|--------------------------------------------------------------------------
+| This example has nothing to do with the app
+| but it shows how to create a class, fields and methods
+| and how to call them with ->
+*/
 class Person 
 {
   public $name;

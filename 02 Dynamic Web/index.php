@@ -21,7 +21,9 @@ $db = new Database($config);
 
 */
 
-$post = $db->query("SELECT * FROM posts WHERE id = 1")->fetch(PDO::FETCH_ASSOC);
+$id = $_GET["id"];
+$query = "SELECT * FROM posts WHERE id = ?";
+$post = $db->query($query, [$id])->fetch(PDO::FETCH_ASSOC);
 
 dd($post["title"]);
 

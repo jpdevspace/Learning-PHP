@@ -3,12 +3,8 @@
 require("functions.php");
 require("Database.php");
 // require("Response.php");
-// require("router.php");
+ require("router.php");
 
-$config = require("config.php");
-
-
-$db = new Database($config);
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +17,10 @@ $db = new Database($config);
 
 */
 
-$id = $_GET["id"];
-$query = "SELECT * FROM posts WHERE id = ?";
-$post = $db->query($query, [$id])->fetch(PDO::FETCH_ASSOC);
+//$id = $_GET["id"];
+//$query = "SELECT * FROM posts WHERE id = ?";
+//$post = $db->query($query, [$id])->fetch(PDO::FETCH_ASSOC);
 
-dd($post["title"]);
 
 
 

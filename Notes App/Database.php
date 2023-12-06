@@ -7,8 +7,6 @@ class Database
 
     public function __construct($config, $username = "root", $password = "")
     {
-        ;
-
         $dsn = "mysql:" . http_build_query($config, "", ";"); // example.com?host=localhost&port=3306&dbname=laracasts_myapp
 
         $this->connection = new PDO($dsn, "root", "", [

@@ -3,6 +3,6 @@
 return [
     "host" => "localhost",
     "port" => 3306,
-    "dbname" => "laracast_myapp",
+    "dbname" => "notes-mini-proj",
     "charset" => "utf8mb4"
 ];

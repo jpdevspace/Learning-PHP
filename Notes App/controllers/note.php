@@ -5,6 +5,18 @@ $db = new Database($config);
 
 $heading = 'Note';
 
-$note = $db -> query("SELECT * FROM notes WHERE user_id = :id", ["id" => $_GET["id"]]) -> fetch();
+$note = $db -> query("SELECT * FROM notes WHERE id = :id",
+    ["id" => $_GET["id"]
+]) -> fetch();
+
+if (!$note)
+{
+    abortReq();
+}
+
+if ($note['user_id'] !== 1)
+{
+    abortReq(Response::FORBIDDEN);
+}
 
 require "views/note.view.php";

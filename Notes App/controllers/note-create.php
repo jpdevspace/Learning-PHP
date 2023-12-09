@@ -1,10 +1,16 @@
 <?php
 
+$config = require("config.php");
+$db = new Database($config);
+
 $heading = "Create New Note";
 $REQ_METHOD = $_SERVER["REQUEST_METHOD"];
 
 if ($REQ_METHOD === "POST") {
-  $form_input = $_POST["note-body"];
+  $db->query("INSERT INTO notes (body, user_id) VALUES(:body, :user_id)", [
+    "body" => $_POST["body"],
+    "user_id" => 1
+  ]);
   // dd($form_input);
 }
 

@@ -169,7 +169,7 @@ class Person
     echo 'Woho, I am ' . $this->age + 1 . ' now!';
   }
 
-  public function scream()
+  public static function scream()
   {
     echo 'AAAAHHH!';
   }
@@ -189,7 +189,7 @@ echo '<br />';
 echo $nobody->bday();
 echo '<br />';
 
-echo $nobody->scream();
+echo $nobody::scream(); // $nobody->scream() can also be used, but we're using :: here because scream is a static method
 echo '<br />';
 
 echo "--------------------------";
@@ -207,5 +207,5 @@ echo '<br />';
 echo $jp->bday();
 echo '<br />';
 
-echo $jp->scream();
+echo $jp::scream(); // $jp->scream() can also be used, but we're using :: here because scream is a static method
 echo '<br />';
